@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ooty Tour Package - Time to Travel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #e6f3e6;
+            background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/ooty/mmt/destination/m_destination-ooty-landscape_l_400_640.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .overlay {
+            background-color: rgba(230, 243, 230, 0.9);
+            min-height: 100vh;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #e0e0e0;
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .package-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #060606;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+        .tour-details {
+            padding: 20px;
+        }
+        .tour-details h2 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .package-info {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .package-info h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+        .package-info ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        .price {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #4CAF50;
+        }
+        .book-now-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .book-now-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <div class="logo">Time to Travel</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="package.html">Package</a></li>
+                <li><a href="book.html">Book Now</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </header>
+
+        <div class="container">
+            <img src="https://hblimg.mmtcdn.com/content/hubble/img/ooty/mmt/destination/m_destination-ooty-landscape_l_400_640.jpg" alt="Ooty Tour" class="package-image">
+            
+            <a href="package.html" class="back-link">← Back to Packages</a>
+            
+            <h1>OOTY TOUR PACKAGE</h1>
+            
+            <div class="tour-details">
+                <h2>OOTY (UDHAGAMANDALAM)</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DAY</th>
+                            <th>PLACES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DAY 1</td>
+                            <td>Botanical Gardens - Ooty Lake - Rose Garden</td>
+                        </tr>
+                        <tr>
+                            <td>DAY 2</td>
+                            <td>Doddabetta Peak - Tea Museum - Thread Garden</td>
+                        </tr>
+                        <tr>
+                            <td>DAY 3</td>
+                            <td>Pykara Lake - Boat House - Pine Forest</td>
+                        </tr>
+                        <tr>
+                            <td>DAY 4</td>
+                            <td>Government Botanical Garden - Emerald Lake - Tribal Museum</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="package-info">
+                    <h3>Package Includes:</h3>
+                    <ul>
+                        <li>4 days accommodation at Mountain View Resort</li>
+                        <li>Transportation for all sightseeing</li>
+                        <li>Driver allowance and parking charges</li>
+                    </ul>
+                    
+                    <h3>Package Excludes:</h3>
+                    <ul>
+                        <li>Food and beverages</li>
+                        <li>Entry fees to attractions</li>
+                        <li>Personal expenses</li>
+                    </ul>
+                    
+                    <p class="price">Price: ₹5500 per person</p>
+                    
+                    <a href="book.html" class="book-now-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
