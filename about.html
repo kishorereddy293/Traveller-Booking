@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact - Time to Travel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #e0e0e0;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .user-info span {
+            margin-right: 10px;
+        }
+        .logout-btn {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        .content-section {
+            background-color: white;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #4CAF50;
+            margin: 25px 0 15px;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info div {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .contact-info i {
+            margin-right: 10px;
+            color: #4CAF50;
+            width: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Time to Travel</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="package.html">Package</a></li>
+                    <li><a href="book.html">Book Now</a></li>
+                    <li><a href="about-contact.html">About Us</a></li>
+                    <li class="user-info">
+                        <span>Welcome, <span id="username-display"></span></span>
+                        <button class="logout-btn" id="logout-btn">Logout</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <h1>About Us</h1>
+            <p>TIME TO TRAVEL is a Chennai-NCR based Tour Company, founded in 2010 dedicated to provide inbound travel services and hospitality. Years of experience added with creative tour packages and thousands of satisfied clients have made us one of the leading tour companies in India.</p>
+            
+            <p>Our philosophy stems from an old adage - "leaving no stone unturned" - which makes us reputable in Tamilnadu tour and travel circles.</p>
+            
+            <h2>Our Mission</h2>
+            <p>We are an employee-owned company with a passion for providing exemplary customer service, leveraging our expertise and technology to deliver innovative travel solutions in a gratifying work environment.</p>
+        </div>
+
+        <div class="content-section">
+            <h1>Contact Us</h1>
+            <p>Have questions or need assistance? We're here to help!</p>
+            
+            <div class="contact-info">
+                <div>
+                    <i>📞</i>
+                    <span>+91 7358170449</span>
+                </div>
+                <div>
+                    <i>✉️</i>
+                    <span>timetotraveltn@gmail.com</span>
+                </div>
+                <div>
+                    <i>🆘</i>
+                    <span>Helpline: 345</span>
+                </div>
+            </div>
+            
+            <h2>Office Hours</h2>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+            <p>Saturday: 10:00 AM - 4:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Time to Travel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Check if user is logged in
+        const loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'));
+        
+        if (!loggedInUser) {
+            // Redirect to login if not logged in
+            window.location.href = "login.html";
+        } else {
+            // Display username
+            document.getElementById('username-display').textContent = loggedInUser.name || loggedInUser.username;
+        }
+        
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            sessionStorage.removeItem('loggedInUser');
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
