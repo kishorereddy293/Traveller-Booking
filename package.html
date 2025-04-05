@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Packages - Time to Travel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #e0e0e0;
+        }
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            color: #060606;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .package-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .package-link:hover {
+            text-decoration: underline;
+        }
+        .view-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .view-btn:hover {
+            background-color: #45a049;
+        }
+        .instructions {
+            background-color: white;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .instructions h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .instructions ol {
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Time to Travel</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="package.html">Package</a></li>
+                    <li><a href="book.html">Book Now</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="./home.html" class="back-btn">← Back to Home</a>
+        
+        <h1>PACKAGES</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>PLACE</th>
+                    <th>HOTEL</th>
+                    <th>NUMBER OF DAYS</th>
+                    <th>AMOUNT (per head)</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chennai</td>
+                    <td>Ambika Palace</td>
+                    <td>4 days</td>
+                    <td>₹4000</td>
+                    <td><a href="chennai.html"><button class="view-btn">View Details</button></a></td>
+                </tr>
+                <tr>
+                    <td>Mahabalipuram with Pondicherry</td>
+                    <td>AK Hotels and Resorts</td>
+                    <td>2 days</td>
+                    <td>₹3480</td>
+                    <td><a href="mahabalipuram.html"><button class="view-btn">View Details</button></a></td>
+                </tr>
+                <tr>
+                    <td>Ooty</td>
+                    <td>Yasu farm villa</td>
+                    <td>4 days</td>
+                    <td>₹5500</td>
+                    <td><a href="ooty.html"><button class="view-btn">View Details</button></a></td>
+                </tr>
+                <tr>
+                    <td>Kanyakumari</td>
+                    <td>Hotel Raja Palace</td>
+                    <td>2 days</td>
+                    <td>₹3900</td>
+                    <td><a href="kanyakumari.html"><button class="view-btn">View Details</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="instructions">
+            <h2>INSTRUCTIONS</h2>
+            <ol>
+                <li>Booking should be done pre-tour at least a couple of weeks.</li>
+                <li>Booking done before 2 days will charge ₹1500 more than normal booking.</li>
+                <li>If any changes in packages/ no of persons/ date of arrival can be done by contacting us through our contact no/ by visiting office directly.</li>
+                <li>Our packages don't provide food.</li>
+                <li>Select the number of cars and transport depends upon your requirement (additional transport cannot be provided at the spot).</li>
+                <li>Driver details and contact number will be sent to your prescribed phone number one day before visiting.</li>
+                <li>Exclusion/ Inclusion of any places in our package can be done to make our customers have a happy trip.</li>
+            </ol>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Time to Travel. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
