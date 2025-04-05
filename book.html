@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now - Time to Travel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            background-image: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #e0e0e0;
+        }
+        .back-btn {
+            display: inline-block;
+            margin: 20px 0;
+            color: #060606;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+            color: #333;
+        }
+        .booking-form, .payment-section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        input[type="number"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .error {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .btn:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .total-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .total-section h3 {
+            margin-bottom: 10px;
+        }
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .payment-method {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .payment-method:hover {
+            border-color: #4CAF50;
+            background-color: #f0f9f0;
+        }
+        .payment-method.selected {
+            border-color: #4CAF50;
+            background-color: #e8f5e9;
+        }
+        .payment-method img {
+            height: 30px;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        .hidden {
+            display: none;
+        }
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Time to Travel</div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="package.html">Package</a></li>
+                    <li><a href="book.html">Book Now</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <a href="package.html" class="back-btn">← Back to Packages</a>
+        
+        <h1>BOOK NOW</h1>
+        
+        <div class="booking-form" id="bookingForm">
+            <form id="tourBookingForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error" id="name-error">Please enter your name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error" id="email-error">Please enter a valid email</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="place">Choose the place to visit:</label>
+                    <select id="place" name="place" required>
+                        <option value="">-- Select the place --</option>
+                        <option value="chennai">Chennai (₹4000 per person)</option>
+                        <option value="mahabalipuram">Mahabalipuram with Pondicherry (₹3480 per person)</option>
+                        <option value="ooty">Ooty (₹5500 per person)</option>
+                        <option value="kanyakumari">Kanyakumari (₹3900 per person)</option>
+                    </select>
+                    <div class="error" id="place-error">Please select a place to visit</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adults">Number of adults:</label>
+                    <input type="number" id="adults" name="adults" min="1" value="1" required>
+                    <div class="error" id="adults-error">Please enter at least 1 adult</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="children">Number of children (below 12):</label>
+                    <input type="number" id="children" name="children" min="0" value="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="transport">No. of transport required:</label>
+                    <input type="number" id="transport" name="transport" min="1" value="1" required>
+                    <div class="error" id="transport-error">Please enter at least 1 transport</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="rooms">No. of rooms required:</label>
+                    <input type="number" id="rooms" name="rooms" min="1" value="1" required>
+                    <div class="error" id="rooms-error">Please enter at least 1 room</div>
+                </div>
+                
+                <div class="total-section">
+                    <h3>TOTAL AMOUNT: <span id="total-amount">₹0</span></h3>
+                </div>
+                
+                <button type="button" class="btn" id="view-total">View Total</button>
+                <button type="button" class="btn" id="proceed-to-pay">Proceed to Pay</button>
+            </form>
+        </div>
+
+        <!-- Payment Section (initially hidden) -->
+        <div class="payment-section hidden" id="paymentSection">
+            <h2>Payment Details</h2>
+            
+            <div class="payment-methods">
+                <div class="payment-method" data-method="credit-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Credit Card">
+                    <p>Credit Card</p>
+                </div>
+                <div class="payment-method" data-method="debit-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/196/196578.png" alt="Debit Card">
+                    <p>Debit Card</p>
+                </div>
+                <div class="payment-method" data-method="netbanking">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2489/2489756.png" alt="Net Banking">
+                    <p>Net Banking</p>
+                </div>
+                <div class="payment-method" data-method="upi">
+                    <img src="https://cdn-icons-png.flaticon.com/512/825/825454.png" alt="UPI">
+                    <p>UPI</p>
+                </div>
+            </div>
+
+            <div id="creditCardForm" class="payment-form">
+                <div class="form-group">
+                    <label for="card-number">Card Number:</label>
+                    <input type="tel" id="card-number" placeholder="1234 5678 9012 3456" required>
+                    <div class="error" id="card-number-error">Please enter a valid card number</div>
+                </div>
+                <div class="form-group">
+                    <label for="card-name">Name on Card:</label>
+                    <input type="text" id="card-name" placeholder="John Doe" required>
+                    <div class="error" id="card-name-error">Please enter name on card</div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1; margin-right: 15px;">
+                        <label for="expiry-date">Expiry Date:</label>
+                        <input type="text" id="expiry-date" placeholder="MM/YY" required>
+                        <div class="error" id="expiry-error">Please enter valid expiry date</div>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="cvv">CVV:</label>
+                        <input type="tel" id="cvv" placeholder="123" required>
+                        <div class="error" id="cvv-error">Please enter valid CVV</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="upiForm" class="payment-form hidden">
+                <div class="form-group">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" placeholder="yourname@upi" required>
+                    <div class="error" id="upi-error">Please enter valid UPI ID</div>
+                </div>
+            </div>
+
+            <div id="netBankingForm" class="payment-form hidden">
+                <div class="form-group">
+                    <label for="bank">Select Bank:</label>
+                    <select id="bank" required>
+                        <option value="">-- Select Bank --</option>
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                        <option value="other">Other Banks</option>
+                    </select>
+                    <div class="error" id="bank-error">Please select a bank</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn" id="back-to-booking">Back to Booking</button>
+                <button type="button" class="btn" id="confirm-payment" disabled>Confirm Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Time to Travel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation functions
+        function validateName() {
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                showError('name-error');
+                return false;
+            }
+            hideError('name-error');
+            return true;
+        }
+
+        function validateEmail() {
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('email-error');
+                return false;
+            }
+            hideError('email-error');
+            return true;
+        }
+
+        function validatePlace() {
+            const place = document.getElementById('place').value;
+            if (place === '') {
+                showError('place-error');
+                return false;
+            }
+            hideError('place-error');
+            return true;
+        }
+
+        function validateAdults() {
+            const adults = document.getElementById('adults').value;
+            if (adults < 1) {
+                showError('adults-error');
+                return false;
+            }
+            hideError('adults-error');
+            return true;
+        }
+
+        function validateTransport() {
+            const transport = document.getElementById('transport').value;
+            if (transport < 1) {
+                showError('transport-error');
+                return false;
+            }
+            hideError('transport-error');
+            return true;
+        }
+
+        function validateRooms() {
+            const rooms = document.getElementById('rooms').value;
+            if (rooms < 1) {
+                showError('rooms-error');
+                return false;
+            }
+            hideError('rooms-error');
+            return true;
+        }
+
+        function validateCardNumber() {
+            const cardNumber = document.getElementById('card-number').value.replace(/\s+/g, '');
+            if (cardNumber.length !== 16 || !/^\d+$/.test(cardNumber)) {
+                showError('card-number-error');
+                return false;
+            }
+            hideError('card-number-error');
+            return true;
+        }
+
+        function validateCardName() {
+            const cardName = document.getElementById('card-name').value.trim();
+            if (cardName === '') {
+                showError('card-name-error');
+                return false;
+            }
+            hideError('card-name-error');
+            return true;
+        }
+
+        function validateExpiry() {
+            const expiry = document.getElementById('expiry-date').value;
+            const parts = expiry.split('/');
+            if (parts.length !== 2 || parts[0].length !== 2 || parts[1].length !== 2 || 
+                isNaN(parts[0]) || isNaN(parts[1]) || 
+                parseInt(parts[0]) < 1 || parseInt(parts[0]) > 12) {
+                showError('expiry-error');
+                return false;
+            }
+            hideError('expiry-error');
+            return true;
+        }
+
+        function validateCVV() {
+            const cvv = document.getElementById('cvv').value;
+            if (cvv.length < 3 || cvv.length > 4 || !/^\d+$/.test(cvv)) {
+                showError('cvv-error');
+                return false;
+            }
+            hideError('cvv-error');
+            return true;
+        }
+
+        function validateUPI() {
+            const upi = document.getElementById('upi-id').value.trim();
+            const upiRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+$/;
+            if (!upiRegex.test(upi)) {
+                showError('upi-error');
+                return false;
+            }
+            hideError('upi-error');
+            return true;
+        }
+
+        function validateBank() {
+            const bank = document.getElementById('bank').value;
+            if (bank === '') {
+                showError('bank-error');
+                return false;
+            }
+            hideError('bank-error');
+            return true;
+        }
+
+        function showError(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function hideError(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function validateBookingForm() {
+            const validName = validateName();
+            const validEmail = validateEmail();
+            const validPlace = validatePlace();
+            const validAdults = validateAdults();
+            const validTransport = validateTransport();
+            const validRooms = validateRooms();
+            
+            return validName && validEmail && validPlace && validAdults && validTransport && validRooms;
+        }
+
+        function validatePaymentForm() {
+            const selectedMethod = document.querySelector('.payment-method.selected');
+            if (!selectedMethod) {
+                alert('Please select a payment method');
+                return false;
+            }
+
+            const method = selectedMethod.getAttribute('data-method');
+            let isValid = false;
+
+            if (method === 'credit-card' || method === 'debit-card') {
+                isValid = validateCardNumber() && validateCardName() && validateExpiry() && validateCVV();
+            } else if (method === 'upi') {
+                isValid = validateUPI();
+            } else if (method === 'netbanking') {
+                isValid = validateBank();
+            }
+
+            return isValid;
+        }
+
+        // Calculate total amount
+        document.getElementById('view-total').addEventListener('click', function() {
+            if (!validatePlace() || !validateAdults()) {
+                return;
+            }
+            
+            const placeSelect = document.getElementById('place');
+            const adults = parseInt(document.getElementById('adults').value);
+            const children = parseInt(document.getElementById('children').value);
+            
+            const prices = {
+                'chennai': 4000,
+                'mahabalipuram': 3480,
+                'ooty': 5500,
+                'kanyakumari': 3900
+            };
+            
+            const price = prices[placeSelect.value];
+            const total = (adults * price) + (children * price * 0.5); // Children at 50% price
+            
+            document.getElementById('total-amount').textContent = '₹' + total;
+        });
+
+        // Show payment section
+        document.getElementById('proceed-to-pay').addEventListener('click', function() {
+            const total = document.getElementById('total-amount').textContent;
+            if (total === '₹0') {
+                alert('Please calculate the total amount first');
+                return;
+            }
+            
+            if (!validateBookingForm()) {
+                alert('Please fill all required fields correctly');
+                return;
+            }
+            
+            document.getElementById('bookingForm').classList.add('hidden');
+            document.getElementById('paymentSection').classList.remove('hidden');
+        });
+
+        // Back to booking form
+        document.getElementById('back-to-booking').addEventListener('click', function() {
+            document.getElementById('paymentSection').classList.add('hidden');
+            document.getElementById('bookingForm').classList.remove('hidden');
+        });
+
+        // Payment method selection
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', function() {
+                paymentMethods.forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Hide all payment forms
+                document.querySelectorAll('.payment-form').forEach(form => {
+                    form.classList.add('hidden');
+                });
+                
+                // Show selected payment form
+                const methodType = this.getAttribute('data-method');
+                if (methodType === 'credit-card' || methodType === 'debit-card') {
+                    document.getElementById('creditCardForm').classList.remove('hidden');
+                } else if (methodType === 'upi') {
+                    document.getElementById('upiForm').classList.remove('hidden');
+                } else if (methodType === 'netbanking') {
+                    document.getElementById('netBankingForm').classList.remove('hidden');
+                }
+                
+                // Enable confirm payment button
+                document.getElementById('confirm-payment').disabled = false;
+            });
+        });
+
+        // Confirm payment
+        document.getElementById('confirm-payment').addEventListener('click', function() {
+            if (!validatePaymentForm()) {
+                return;
+            }
+            
+            // Here you would typically process the payment
+            // For demo purposes, we'll just redirect to success page
+            window.location.href = 'success.html';
+        });
+
+        // Real-time validation for booking form
+        document.getElementById('name').addEventListener('blur', validateName);
+        document.getElementById('email').addEventListener('blur', validateEmail);
+        document.getElementById('place').addEventListener('change', validatePlace);
+        document.getElementById('adults').addEventListener('blur', validateAdults);
+        document.getElementById('transport').addEventListener('blur', validateTransport);
+        document.getElementById('rooms').addEventListener('blur', validateRooms);
+
+        // Real-time validation for payment form
+        document.getElementById('card-number').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\s+/g, '');
+            if (value.length > 0) {
+                value = value.match(new RegExp('.{1,4}', 'g')).join(' ');
+            }
+            e.target.value = value;
+            validateCardNumber();
+        });
+
+        document.getElementById('card-name').addEventListener('blur', validateCardName);
+        document.getElementById('expiry-date').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 2) {
+                value = value.substring(0, 2) + '/' + value.substring(2, 4);
+            }
+            e.target.value = value;
+            validateExpiry();
+        });
+        document.getElementById('cvv').addEventListener('blur', validateCVV);
+        document.getElementById('upi-id').addEventListener('blur', validateUPI);
+        document.getElementById('bank').addEventListener('change', validateBank);
+    </script>
+</body>
+</html>
